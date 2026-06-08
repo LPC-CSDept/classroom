@@ -20,5 +20,6 @@ body:
         - A24
         - A25
         - A26
+        - Q3Q1
     validations:
       required: true
