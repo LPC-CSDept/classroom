@@ -120,7 +120,6 @@ jobs:
             done
           fi
 
-          gh issue comment "$ISSUE" --body "✅ Repo: https://github.com/$ORG/$REPO
-👉 Accept the invite: https://github.com/$ORG/$REPO/invitations
-Then clone: \`gh repo clone $ORG/$REPO\`"
+          MSG="$(printf '✅ Repo: https://github.com/%s/%s\n👉 Accept the invite: https://github.com/%s/%s/invitations\nThen clone: `gh repo clone %s/%s`' "$ORG" "$REPO" "$ORG" "$REPO" "$ORG" "$REPO")"
+          gh issue comment "$ISSUE" --body "$MSG"
           gh issue close "$ISSUE"
