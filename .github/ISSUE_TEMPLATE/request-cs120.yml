@@ -12,8 +12,13 @@ body:
     id: assignment
     attributes:
       label: Assignment
-      description: (Pilot — A00 only. Auto-generated from config later.)
+      description: (Auto-generated from config later via sync.)
       options:
         - A00
+        - A22
+        - A23
+        - A24
+        - A25
+        - A26
     validations:
       required: true
