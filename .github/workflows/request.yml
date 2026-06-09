@@ -93,8 +93,9 @@ jobs:
 
           # --- create repo from template (idempotent); cross-repo → ORG_PAT ---
           if GH_TOKEN="$ORG_PAT" gh repo view "$ORG/$REPO" >/dev/null 2>&1; then
-            echo "repo exists, idempotent path"
+            EXISTED=1   # idempotent — repo already there, just return the existing link
           else
+            EXISTED=0
             # template must exist + be a template (setup error, not student fault)
             GH_TOKEN="$ORG_PAT" gh repo view "$ORG/$TEMPLATE" >/dev/null 2>&1 \
               || fail "⚠️ Setup error: template \`$ORG/$TEMPLATE\` not found. (Instructor: check config / template flag.)"
@@ -113,6 +114,11 @@ jobs:
           GH_TOKEN="$ORG_PAT" gh api -X PUT "repos/$DATA_REPO/contents/log/$REPO.json" \
             -f message="request: $REPO" -f content="$LOG_B64" ${LSHA:+-f sha="$LSHA"} >/dev/null
 
-          MSG="$(printf '✅ Repo: https://github.com/%s/%s\n👉 Accept the invite: https://github.com/%s/%s/invitations\nThen clone: `gh repo clone %s/%s`' "$ORG" "$REPO" "$ORG" "$REPO" "$ORG" "$REPO")"
+          if [ "${EXISTED:-0}" = "1" ]; then
+            LEAD='ℹ️ You already have this repo — returning your existing link (nothing new was created).'
+          else
+            LEAD='✅ Repo created.'
+          fi
+          MSG="$(printf '%s\nRepo: https://github.com/%s/%s\n👉 Accept the invite: https://github.com/%s/%s/invitations\nThen clone: `gh repo clone %s/%s`' "$LEAD" "$ORG" "$REPO" "$ORG" "$REPO" "$ORG" "$REPO")"
           gh issue comment "$ISSUE" --body "$MSG"
           gh issue close "$ISSUE"
