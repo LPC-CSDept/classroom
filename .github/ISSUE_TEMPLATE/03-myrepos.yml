@@ -6,5 +6,12 @@ body:
     attributes:
       value: |
         ### See all your repos
-        Just **Submit** — you'll get a comment listing every assignment repo you have, with links.
-        Nothing to fill in (your GitHub username is captured automatically).
+        Check the box and **Submit** — you'll get a comment listing every repo you have, with links.
+        Your GitHub username is captured automatically (nothing else to fill in).
+  - type: checkboxes
+    id: confirm
+    attributes:
+      label: List my repos
+      options:
+        - label: Show all repos I've been given
+          required: true
