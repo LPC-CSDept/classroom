@@ -1,0 +1,54 @@
+name: myrepos
+
+on:
+  issues:
+    types: [opened]
+
+permissions:
+  issues: write   # comment + close (read-only on the admin repo via ORG_PAT)
+
+concurrency:
+  group: myrepos-issue-${{ github.event.issue.number }}
+  cancel-in-progress: false
+
+jobs:
+  myrepos:
+    if: startsWith(github.event.issue.title, 'myrepos:')
+    runs-on: ubuntu-latest
+    steps:
+      - name: List the requester's repos (from the PRIVATE admin log, their own only)
+        env:
+          GH_TOKEN: ${{ github.token }}
+          ORG_PAT: ${{ secrets.ORG_PAT }}   # read the private admin repo
+          GH_REPO: ${{ github.repository }}
+          ORG: ${{ github.repository_owner }}
+          ISSUE: ${{ github.event.issue.number }}
+          USERNAME: ${{ github.event.issue.user.login }}
+        run: |
+          set -euo pipefail
+          UKEY="$(printf '%s' "$USERNAME" | tr '[:upper:]' '[:lower:]')"
+          DATA_REPO="${GH_REPO}-admin"
+
+          # this user's log files = those whose name ends with -<ukey>.json (repo name embeds username)
+          NAMES="$(GH_TOKEN="$ORG_PAT" gh api "repos/$DATA_REPO/contents/log" --jq '.[].name' 2>/dev/null | grep -- "-${UKEY}\.json$" || true)"
+
+          ROWS=""
+          if [ -n "$NAMES" ]; then
+            while read -r name; do
+              [ -n "$name" ] || continue
+              J="$(GH_TOKEN="$ORG_PAT" gh api "repos/$DATA_REPO/contents/log/$name" --jq '.content' 2>/dev/null | base64 -d 2>/dev/null || true)"
+              [ -n "$J" ] || continue
+              LINE="$(jq -r --arg o "$ORG" '"| \(.course) | \(.assignment) | [\(.repo)](https://github.com/\($o)/\(.repo)) |"' <<< "$J")"
+              ROWS="${ROWS}${LINE}"$'\n'
+            done <<< "$NAMES"
+          fi
+          ROWS="$(printf '%s' "$ROWS" | sort)"
+
+          if [ -n "$ROWS" ]; then
+            N="$(printf '%s\n' "$ROWS" | grep -c '^|' || true)"
+            BODY="$(printf 'Your repos (`%s`) — %s total:\n\n| Course | Assignment | Repo |\n|---|---|---|\n%s' "$UKEY" "$N" "$ROWS")"
+          else
+            BODY="You don't have any repos yet. Request one from your Canvas course link first."
+          fi
+          gh issue comment "$ISSUE" --body "$BODY"
+          gh issue close "$ISSUE"

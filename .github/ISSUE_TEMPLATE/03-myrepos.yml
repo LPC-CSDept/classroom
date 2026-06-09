@@ -1,0 +1,10 @@
+name: My repos
+description: List every assignment repo you've been given (all courses). Username captured automatically.
+title: "myrepos: "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ### See all your repos
+        Just **Submit** — you'll get a comment listing every assignment repo you have, with links.
+        Nothing to fill in (your GitHub username is captured automatically).

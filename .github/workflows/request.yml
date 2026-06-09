@@ -114,6 +114,9 @@ jobs:
           GH_TOKEN="$ORG_PAT" gh api -X PUT "repos/$DATA_REPO/contents/log/$REPO.json" \
             -f message="request: $REPO" -f content="$LOG_B64" ${LSHA:+-f sha="$LSHA"} >/dev/null
 
+          # rename the issue so the author-filter list is self-explanatory (e.g. "request-cs120: A23")
+          gh issue edit "$ISSUE" --title "request-${COURSE}: ${ASSIGN}" >/dev/null 2>&1 || true
+
           if [ "${EXISTED:-0}" = "1" ]; then
             LEAD='ℹ️ You already have this repo — returning your existing link (nothing new was created).'
           else
