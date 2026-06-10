@@ -28,7 +28,7 @@ Fork (not "Use this template") so you can later pull our code fixes — see **Up
 Because the repo had workflow files when forked, GitHub disables them on your fork until you approve.
 Open each repo's **Actions** tab and click the green button. **Nothing runs until you do this.**
 
-![Enable workflows on a fork](docs/enable-workflows.png)
+![Enable workflows on a fork](enable-workflows.png)
 
 Do it on **both** `<your-org>/classroom` **and** `<your-org>/classroom-admin`.
 

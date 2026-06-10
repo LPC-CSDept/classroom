@@ -41,3 +41,5 @@ Just **Submit** (nothing to fill in) → you get a comment listing **all** your 
 Edit it (here on GitHub or a clone) and the **gen-forms** Action regenerates the request forms
 automatically. This repo is a fork of `gh-classroomless/classroom-template`; code fixes arrive by merging the
 template. Student PII (name/email) and the submission report live in the private `…-admin` repo, never here.
+
+**Deploying this for your own school?** See [`docs/INSTRUCTOR.md`](docs/INSTRUCTOR.md).
