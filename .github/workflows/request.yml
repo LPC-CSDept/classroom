@@ -90,8 +90,11 @@ jobs:
             || fail "⚠️ Setup error: assignment \`$ASSIGN\` has no template in config."
 
           SEM="$(jq -r --arg c "$COURSE" '.courses[$c].semester' "$CONFIG")"
-          PATTERN="$(jq -r --arg c "$COURSE" '.courses[$c].student_repo_pattern' "$CONFIG")"
+          # pattern is OPTIONAL — default uses {course} so a hand-edited config can't hardcode the wrong
+          # prefix (e.g. copying cs120's block for cs130). {course} is substituted from the parsed course.
+          PATTERN="$(jq -r --arg c "$COURSE" '.courses[$c].student_repo_pattern // "{course}-{semester}-{assignment}-{username}"' "$CONFIG")"
           REPO="$PATTERN"
+          REPO="${REPO//\{course\}/$COURSE}"
           REPO="${REPO//\{semester\}/$SEM}"
           REPO="${REPO//\{assignment\}/$ASSIGN}"
           REPO="${REPO//\{username\}/$UKEY}"
