@@ -1,0 +1,18 @@
+name: Request a CSCI19A repo
+description: Get your personal repo for a CSCI19A assignment. Register first if you have not.
+title: "request-csci19a: "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ### Request your CSCI19A assignment repo
+        Pick the assignment. Your GitHub username is captured automatically.
+        Not registered yet? Open the **Register** form first.
+  - type: dropdown
+    id: assignment
+    attributes:
+      label: Assignment
+      description: (Auto-generated from config.json — do not hand-edit.)
+      options:
+    validations:
+      required: true

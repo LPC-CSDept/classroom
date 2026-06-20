@@ -1,0 +1,9 @@
+{
+  "courses": {
+    "csci19a": {
+      "assignments": {},
+      "semester": "su26",
+      "student_repo_pattern": "csci19a-{semester-{assignment}-{username}}"
+    }
+  }
+}
