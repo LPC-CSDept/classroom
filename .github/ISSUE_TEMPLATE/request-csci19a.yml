@@ -16,3 +16,5 @@ body:
       options:
         - W34
         - W35
+    validations:
+      required: true
