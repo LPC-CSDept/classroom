@@ -6,12 +6,15 @@ body:
     attributes:
       value: |
         ### Request your CSCI19A assignment repo
-        Your GitHub username is captured automatically.
+        Pick the assignment. Your GitHub username is captured automatically.
         Not registered yet? Open the **Register** form first.
-  - type: input
+  - type: dropdown
     id: assignment
     attributes:
       label: Assignment
-      description: (Pre-filled from your Canvas link — just leave it as is.)
+      description: (Auto-generated from config.json — do not hand-edit.)
+      options:
+        - W34
+        - W35
     validations:
       required: true
