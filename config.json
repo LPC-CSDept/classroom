@@ -3,7 +3,8 @@
     "csci19a": {
       "assignments": {
         "W34": "CSCI19A00Starter",
-        "W35": "CSCI19W35Starter"
+        "W35": "CSCI19W35Starter",
+        "A21": "CSCI19A21Starter"
       },
       "semester": "su26",
       "student_repo_pattern": "{course}-{semester}-{assignment}-{username}"
