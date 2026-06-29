@@ -22,5 +22,6 @@ body:
         - A24
         - A251
         - A252
+        - A27
     validations:
       required: true
