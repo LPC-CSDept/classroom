@@ -7,7 +7,8 @@
         "A21": "CSCI19A21Starter",
         "A22": "CSCI19A22Starter",
         "A23": "CSCI19A23Starter",
-        "A24": "CSCI19A24Starter"
+        "A24": "CSCI19A24Starter",
+        "A251": "CSCI19A251Starter"
       },
       "semester": "su26",
       "student_repo_pattern": "{course}-{semester}-{assignment}-{username}"
