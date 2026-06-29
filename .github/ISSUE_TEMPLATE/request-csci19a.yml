@@ -17,5 +17,6 @@ body:
         - W34
         - W35
         - A21
+        - A22
     validations:
       required: true
