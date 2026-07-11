@@ -12,7 +12,8 @@
         "A252": "CSCI19A252Starter",
         "A27": "CSCI19A27Starter",
         "A26": "CSCI19A26Starter",
-        "A28": "CSCI19A28Starter"
+        "A28": "CSCI19A28Starter",
+        "A31": "CSCI19A31Starter"
       },
       "semester": "su26",
       "student_repo_pattern": "{course}-{semester}-{assignment}-{username}"
