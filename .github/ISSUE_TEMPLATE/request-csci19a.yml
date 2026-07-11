@@ -26,5 +26,6 @@ body:
         - A26
         - A28
         - A31
+        - A32
     validations:
       required: true
