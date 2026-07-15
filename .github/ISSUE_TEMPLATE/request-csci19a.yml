@@ -47,5 +47,6 @@ body:
         - A59
         - A510
         - A511
+        - A512
     validations:
       required: true
