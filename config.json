@@ -31,7 +31,8 @@
         "A55": "CSCI19AA55Starter",
         "A56": "CSCI19AA56Starter",
         "A57": "CSCI19AA57Starter",
-        "A58": "CSCI19AA58Starter"
+        "A58": "CSCI19AA58Starter",
+        "A59": "CSCI19AA59Starter"
       },
       "semester": "su26",
       "student_repo_pattern": "{course}-{semester}-{assignment}-{username}"
