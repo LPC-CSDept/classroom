@@ -22,7 +22,8 @@
         "A37": "CSCI19A37Starter",
         "Q5Q1": "CSCI19AQ5Q1Starter",
         "Q5Q3": "CSCI19AQ5Q3Starter",
-        "Q5Q2": "CSCI19AQ5Q2Starter"
+        "Q5Q2": "CSCI19AQ5Q2Starter",
+        "A50": "CSCI19AA50Starter"
       },
       "semester": "su26",
       "student_repo_pattern": "{course}-{semester}-{assignment}-{username}"
