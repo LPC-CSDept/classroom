@@ -50,5 +50,6 @@ body:
         - A512
         - A513
         - A61
+        - A62
     validations:
       required: true
