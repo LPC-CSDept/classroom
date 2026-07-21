@@ -49,7 +49,8 @@
         "A610": "CSCI19A610Starter",
         "A611": "CSCI19A611Starter",
         "A612": "CSCI19A612Starter",
-        "Q6Q1": "CSCI19AQ6Q1Starter"
+        "Q6Q1": "CSCI19AQ6Q1Starter",
+        "Q6Q2": "CSCI19AQ6Q2Starter"
       },
       "semester": "su26",
       "student_repo_pattern": "{course}-{semester}-{assignment}-{username}"
