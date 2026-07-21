@@ -60,5 +60,6 @@ body:
         - A69
         - A610
         - A611
+        - A612
     validations:
       required: true
